@@ -42,11 +42,11 @@ rm -rf yazi.zip yazi-x86_64-unknown-linux-gnu
 
 # Install aichat
 echo "Installing aichat..."
-AICHAT_VERSION="0.19.0"
-curl -L "https://github.com/sigoden/aichat/releases/download/v${AICHAT_VERSION}/aichat-v${AICHAT_VERSION}-x86_64-unknown-linux-gnu.tar.gz" -o aichat.tar.gz
+AICHAT_VERSION="0.30.0"
+curl -L "https://github.com/sigoden/aichat/releases/download/v${AICHAT_VERSION}/aichat-v${AICHAT_VERSION}-x86_64-unknown-linux-musl.tar.gz" -o aichat.tar.gz
 tar -xzf aichat.tar.gz
-mv aichat-v${AICHAT_VERSION}-x86_64-unknown-linux-gnu/aichat /usr/local/bin/
-rm -rf aichat.tar.gz aichat-v${AICHAT_VERSION}-x86_64-unknown-linux-gnu
+mv aichat /usr/local/bin/
+rm -rf aichat.tar.gz
 
 # Install happy-coder
 npm install -g happy-coder
