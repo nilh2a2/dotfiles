@@ -14,6 +14,8 @@ apt-get update && apt-get install -y --no-install-recommends \
     gnupg \
     sudo \
     bash \
+    zsh \
+    tmux \
     unzip \
     btop \
     fd-find \
