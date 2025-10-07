@@ -33,10 +33,15 @@ apt-get update && apt-get install -y --no-install-recommends \
 
 
 echo -e "\n---\n"
-echo "Applying dotfiles via chezmoi..."
+echo "Applying dotfiles..."
 sh -c "$(curl -fsLS get.chezmoi.io)"
 chezmoi init https://github.com/nilh2a2/dotfiles.git
 chezmoi apply
+
+git clone https://github.com/nilh2a2/nvim.git ~/.config/nvim
+nvim --headless -c "lua require('lazy').sync({wait=true})" -c "qa"
+
+git clone https://github.com/nilh2a2/dot-claude.git ~/.claude
 
 echo -e "\n---\n"
 echo "Installing Yazi..."
