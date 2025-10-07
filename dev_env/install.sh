@@ -43,7 +43,7 @@ unzip yazi.zip
 mv yazi-x86_64-unknown-linux-gnu/yazi /usr/local/bin/
 mv yazi-x86_64-unknown-linux-gnu/ya /usr/local/bin/
 rm -rf yazi.zip yazi-x86_64-unknown-linux-gnu
-ya pack -a
+ya pkg install
 
 echo -e "\n---\n"
 echo "Installing aichat..."
