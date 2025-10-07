@@ -1,0 +1,18 @@
+window-width = 140
+window-height = 50
+
+# theme
+theme = dark:Nord Wave,light:Github Light High Contrast
+cursor-color = "#5362a6"
+cursor-text = "#ffffff"
+
+# font
+font-size = 16
+font-family = Ubuntu Mono
+
+# etc
+shell-integration-features = no-cursor,no-title
+
+# fix: https://github.com/ghostty-org/ghostty/discussions/3151#discussioncomment-11678064
+keybind = ctrl+enter=text:\r
+keybind = shift+enter=text:\n

@@ -1,0 +1,76 @@
+# ----- env/alias -----
+export LANG=en_US.UTF-8
+export EDITOR=nvim
+export VISUAL=nvim
+
+alias v='nvim'
+alias vim='nvim'
+
+alias gst='git status'
+alias gco='git checkout'
+alias gaa='git add --all'
+alias gc='git commit --verbose'
+
+# ----- zsh -----
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^v' edit-command-line
+
+precmd() {
+    print
+    local smart_pwd="${(%):-%~}"
+    echo -ne "\e]0;${smart_pwd}\a"
+    echo -ne '\e[1 q'
+}
+
+PROMPT=$'%F{cyan}%B%(6~|.../%5~|%~)%b%f\n%(?,%F{green},%F{red})%B%(!.#.>)%b%f '
+
+# Set block cursor
+
+# ----- plugin -----
+eval "$(zoxide init zsh)"
+eval "$(fzf --zsh)"
+autoload -U compinit; compinit
+
+# ----- tools -----
+
+r() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
+}
+
+claudedd() {
+    claude --dangerously-skip-permissions
+}
+
+aichatcb() {
+    echo "Clipboard Preview:"
+    echo '```'
+    local content=$(pbpaste)
+    local line_count=$(echo "$content" | wc -l | tr -d ' ')
+    
+    if [ "$line_count" -le 10 ]; then
+        echo "$content"
+    else
+        echo "$content" | head -5
+        echo "..."
+        echo "$content" | tail -5
+    fi
+    
+    echo '```'
+    echo "Continue?"
+    read -k1 key
+    
+    if [[ "$key" == "q" || "$key" == $'\e' ]]; then
+        echo "\nAborted."
+        return 0
+    fi
+    
+    echo "\nWaiting for response..."
+    local temp_file=$(mktemp /tmp/aichat.XXXXXX.md)
+    pbpaste | aichat > "$temp_file" && nvim "$temp_file" && rm "$temp_file"
+}

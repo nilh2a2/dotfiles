@@ -1,0 +1,14 @@
+[mgr]
+border_symbol = " "
+preview_hovered = { underline = false }
+
+[status]
+sep_left = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+
+[icon]
+globs = []
+dirs  = []
+files = []
+exts  = []
+conds = []
