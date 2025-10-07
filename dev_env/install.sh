@@ -36,6 +36,7 @@ echo -e "\n---\n"
 echo "Applying dotfiles via chezmoi..."
 sh -c "$(curl -fsLS get.chezmoi.io)"
 chezmoi init https://github.com/nilh2a2/dotfiles.git
+chezmoi apply
 
 echo -e "\n---\n"
 echo "Installing Yazi..."

@@ -1,4 +1,0 @@
-[".config/nvim"]
-    type = "git-repo"
-    url = "https://github.com/nilh2a2/nvim.git"
-    refreshPeriod = "1s"
