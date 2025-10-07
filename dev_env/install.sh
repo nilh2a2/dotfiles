@@ -9,6 +9,8 @@ apt-get update && apt-get install -y --no-install-recommends \
     curl \
     wget \
     ca-certificates \
+    openssh-server \
+    openssh-client \
     gnupg \
     sudo \
     bash \
@@ -38,8 +40,10 @@ sh -c "$(curl -fsLS get.chezmoi.io)"
 chezmoi init https://github.com/nilh2a2/dotfiles.git
 chezmoi apply
 
-git clone https://github.com/nilh2a2/nvim.git ~/.config/nvim
-nvim --headless -c "lua require('lazy').sync({wait=true})" -c "qa"
+# todo: neovim
+# NOTE: there are plugins need compiler(c and zig) to init, ignored
+# git clone https://github.com/nilh2a2/nvim.git ~/.config/nvim
+# nvim --headless -c "lua require('lazy').sync({wait=true})" -c "qa"
 
 git clone https://github.com/nilh2a2/dot-claude.git ~/.claude
 
