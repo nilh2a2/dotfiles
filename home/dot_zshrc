@@ -4,12 +4,13 @@ export EDITOR=nvim
 export VISUAL=nvim
 
 alias v='nvim'
-alias vim='nvim'
 
 alias gst='git status'
 alias gco='git checkout'
 alias gaa='git add --all'
 alias gc='git commit --verbose'
+alias gd='git diff | delta --side-by-side --line-numbers'
+alias gdn='git diff --name-only'
 
 # ----- zsh -----
 autoload -U edit-command-line
@@ -24,8 +25,6 @@ precmd() {
 }
 
 PROMPT=$'%F{cyan}%B%(6~|.../%5~|%~)%b%f\n%(?,%F{green},%F{red})%B%(!.#.>)%b%f '
-
-# Set block cursor
 
 # ----- plugin -----
 eval "$(zoxide init zsh)"
@@ -74,3 +73,8 @@ aichatcb() {
     local temp_file=$(mktemp /tmp/aichat.XXXXXX.md)
     pbpaste | aichat > "$temp_file" && nvim "$temp_file" && rm "$temp_file"
 }
+
+alias dev-env='docker exec -it dev-env zsh'
+
+alias pt='plantmux'
+alias ghpr='gh pr list --web'
