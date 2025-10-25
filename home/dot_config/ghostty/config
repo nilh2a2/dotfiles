@@ -2,7 +2,7 @@ window-width = 140
 window-height = 50
 
 # theme
-theme = dark:Nord Wave,light:Github Light High Contrast
+theme = dark:Catppuccin Mocha,light:Github Light High Contrast
 cursor-color = "#5362a6"
 cursor-text = "#ffffff"
 

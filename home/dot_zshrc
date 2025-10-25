@@ -9,13 +9,15 @@ alias gst='git status'
 alias gco='git checkout'
 alias gaa='git add --all'
 alias gc='git commit --verbose'
-alias gd='git diff | delta --side-by-side --line-numbers'
+gd() {
+    git diff "$@" | delta --side-by-side --line-numbers
+}
 alias gdn='git diff --name-only'
 
 # ----- zsh -----
 autoload -U edit-command-line
 zle -N edit-command-line
-bindkey '^v' edit-command-line
+bindkey '^g' edit-command-line
 
 precmd() {
     print
